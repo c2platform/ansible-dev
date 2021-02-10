@@ -1,0 +1,15 @@
+[submodule "ansible_collections/c2platform/apps"]
+	path = ansible_collections/c2platform/apps
+	url = git@github.com:c2platform/ansible-collection-apps.git
+[submodule "ansible_collections/c2platform/core"]
+	path = ansible_collections/c2platform/core
+	url = git@github.com:c2platform/ansible-collection-core.git
+[submodule "ansible_collections/c2platform/mgmt"]
+	path = ansible_collections/c2platform/mgmt
+	url = git@github.com:c2platform/ansible-collection-mgmt.git
+[submodule "ansible_collections/c2platform/mw"]
+	path = ansible_collections/c2platform/mw
+	url = git@github.com:c2platform/ansible-collection-mw.git
+[submodule "ansible_collections/c2platform/test"]
+	path = ansible_collections/c2platform/test
+	url = git@github.com:c2platform/ansible-collection-test.git

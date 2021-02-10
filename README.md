@@ -1,4 +1,4 @@
-# C2 Platform Ansible Repository
+# C2 Platform Ansible Development Repository
 
 This purpose of this repository is to automate Life Cycle Management (LCM) procedures using Ansible.
 
