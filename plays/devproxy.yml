@@ -1,0 +1,19 @@
+---
+- name: devproxy # for dev environments
+  hosts: devproxy
+  become: True
+
+  roles:
+    - { role: c2platform.core.common }
+    - { role: c2platform.core.java }
+    - { role: c2platform.test.opendj }
+    - { role: c2platform.platform.nfs }
+    - { role: c2platform.platform.postfix }
+    - { role: c2platform.platform.squid }
+    - { role: c2platform.platform.proxy }
+    - { role: c2platform.test.env }
+    - { role: c2platform.platform.reverse_proxy }
+
+  vars:
+    opendj_url: https://github.com/OpenIdentityPlatform/OpenDJ/releases/download/4.4.3/opendj-4.4.3.zip
+    apache_create_vhosts: no

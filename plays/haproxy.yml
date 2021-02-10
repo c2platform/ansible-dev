@@ -1,0 +1,8 @@
+---
+- name: haproxy
+  hosts: haproxy
+  become: True
+
+  roles:
+    - { role: c2platform.core.common,       tags: ["common"] }
+    - { role: c2platform.platform.haproxy,  tags: ["haproxy"] }

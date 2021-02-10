@@ -1,0 +1,11 @@
+---
+- name: reverse_proxy.yml
+  hosts: reverse_proxy
+  become: yes
+
+  roles:
+    - { role: common,             tags: ["common"] }
+    - { role: reverse_proxy,      tags: ["reverse_proxy"] }
+
+  vars:
+    apache_create_vhosts: no

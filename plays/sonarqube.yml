@@ -1,0 +1,12 @@
+---
+- name: sonarqube.yml | All roles
+  hosts: sonarqube
+  become: yes
+
+  roles:
+    - { role: common,                       tags: ["common"] }
+    - { role: postgresql_client,            tags: ["postgresql"] }    
+    - { role: java,                         tags: ["java"] }
+    - { role: https_proxy,                  tags: ["proxy"] }
+    - { role: sonarqube,                    tags: ["sonarqube"] }
+    - { role: backup,                       tags: ["backup"] }

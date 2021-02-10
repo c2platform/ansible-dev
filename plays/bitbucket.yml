@@ -1,0 +1,19 @@
+---
+- name: bitbucket.yml
+  hosts: bitbucket
+  become: yes
+
+  roles:
+    - { role: c2platform.core.common,               tags: ["common"] }
+    - { role: c2platform.core.postgresql_client,    tags: ["database"], when: bitbucket_database_type == 'postgresql' }
+    - { role: c2platform.core.oracle_client,        tags: ["database"], when: bitbucket_database_type == 'oracle' }
+    - { role: geerlingguy.git,                      tags: ["bitbucket"] }
+    - { role: c2platform.services.bitbucket,        tags: ["bitbucket"] }
+    - { role: c2platform.platform.backup,           tags: ["backup"] }
+
+  vars:
+    git_install_from_source: true
+    git_version: "2.16.2"
+    git_install_from_source_force_update: true
+    adoptopenjdk:
+      version: false # use embedded java

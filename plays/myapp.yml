@@ -1,0 +1,11 @@
+---
+- name: myapp.yml
+  hosts: myapp_servers
+  any_errors_fatal: true  
+  become: yes
+
+  roles:
+    - { role: common,                       tags: ["common"] }
+    - { role: postgresql_client,            tags: ["database"] }    
+    - { role: myapp,                        tags: ["application"] }
+    - { role: backup,                       tags: ["backup"] }

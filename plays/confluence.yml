@@ -1,0 +1,11 @@
+---
+- name: confluence.yml
+  hosts: confluence
+  become: yes
+
+  roles:
+    - { role: common,                       tags: ["common"] }
+    - { role: postgresql_client,            tags: ["confluence", "postgresql"], when: confluence_database_type == 'postgresql' }
+    - { role: oracle_client,                tags: ["confluence", "oracle"], when: confluence_database_type == 'oracle' }
+    - { role: confluence,                   tags: ["confluence"] }
+    - { role: backup,                       tags: ["common", "backup"] }

@@ -1,0 +1,10 @@
+---
+- name: Sites
+  hosts: sites
+  become: yes
+
+  roles:
+    - { role: common,                       tags: ["common"] }
+    - { role: backup,                       tags: ["backup"] }
+    - { role: geerlingguy.git,              tags: ["sites"] }
+    - { role: sites,                        tags: ["sites"] }

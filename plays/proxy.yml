@@ -1,0 +1,9 @@
+---
+- name: proxy.yml | All roles
+  hosts: proxy
+  become: yes
+
+  roles:
+    - { role: c2.core.common,     tags: ["common"] }
+    - { role: squid,              tags: ["proxy"] }
+    - { role: proxy,              tags: ["proxy"] }

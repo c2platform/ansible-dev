@@ -1,0 +1,21 @@
+---
+- name: Nexus
+  hosts: nexus
+  become: yes
+
+  vars:
+    nexus_timezone: 'Europa/Amsterdam'
+    nexus_admin_password: "{{ vault_nexus_admin_password }}"
+    httpd_setup_enable: false
+    adoptopenjdk:
+      version: jdk8_222b10_oj9
+    adoptopenjdk_java_home_etc_environment: true
+    nexus_installation_dir: /opt/nexus
+    nexus_data_dir: /opt/nexus/data
+
+  roles:
+    - { role: common,                       tags: ["common"] }
+    - { role: java,                         tags: ["java"] }
+    - { role: ansible-thoteam.nexus3-oss,   tags: ['nexus'] }
+    - { role: nexus,                        tags: ['nexus'] }
+    - { role: backup,                       tags: ["backup"] }
