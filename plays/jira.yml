@@ -7,5 +7,5 @@
     - { role: c2platform.core.common,               tags: ["common"] }
     - { role: c2platform.core.postgresql_client,    tags: ["jira", "postgresql"], when: jira_database_type == 'postgresql' }
     - { role: c2platform.core.oracle_client,        tags: ["jria", "oracle"], when: jira_database_type == 'oracle' }
-    - { role: c2platform.services.jira,             tags: ["jira"] }
-    - { role: c2platform.platform.backup,           tags: ["common", "backup"] }
+    - { role: c2platform.apps.jira,                 tags: ["jira"] }
+    - { role: c2platform.mgmt.backup,               tags: ["common", "backup"] }

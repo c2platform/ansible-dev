@@ -5,4 +5,4 @@
 
   roles:
     - { role: c2platform.core.common,       tags: ["common"] }
-    - { role: c2platform.platform.haproxy,  tags: ["haproxy"] }
+    - { role: c2platform.mw.haproxy,  tags: ["haproxy"] }

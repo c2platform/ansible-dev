@@ -6,8 +6,8 @@
   roles:
     - { role: c2platform.core.common,       tags: ["common"] }
     - { role: geerlingguy.docker,           tags: ["awx", "docker"] }
-    - { role: c2platform.services.awx,      tags: ["awx"] }
-    - { role: c2platform.platform.backup,   tags: ["backup"] }
+    - { role: c2platform.mgmt.awx,          tags: ["awx"] }
+    - { role: c2platform.mgmt.backup,       tags: ["backup"] }
 
   vars:
     common_pip_packages_extra: ['docker','docker-compose']
