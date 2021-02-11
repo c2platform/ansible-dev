@@ -8,7 +8,7 @@
     - { role: c2platform.core.postgresql_client,    tags: ["database"], when: bitbucket_database_type == 'postgresql' }
     - { role: c2platform.core.oracle_client,        tags: ["database"], when: bitbucket_database_type == 'oracle' }
     - { role: geerlingguy.git,                      tags: ["bitbucket"] }
-    - { role: c2platform.services.bitbucket,        tags: ["bitbucket"] }
+    - { role: c2platform.apps.bitbucket,        tags: ["bitbucket"] }
     - { role: c2platform.mgmt.backup,           tags: ["backup"] }
 
   vars:
