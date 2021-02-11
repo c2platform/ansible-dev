@@ -1,5 +1,5 @@
 ---
-common_packages_extra: 
+common_packages_extra:
   RedHat 7: ['nfs-utils', 'nano', 'tree', 'python-devel','openldap-devel','unzip']
 
 #'libffi-dev','libpq-dev'
