@@ -2,19 +2,19 @@
 
 This purpose of this repository is to automate Life Cycle Management (LCM) procedures using Ansible.
 
-<!-- MarkdownTOC -->
+<!-- MarkdownTOC levels="2,3" autolink="true" -->
 
-- Products
-- Getting Started
-    - Ansible
-    - Vagrant
-    - VirtualBox
-    - Setup project directory
-    - Private Repository
-    - Provision a first service
-    - Provision
-    - LDAP
-- License
+- [Products](#products)
+- [Getting Started](#getting-started)
+    - [Ansible](#ansible)
+    - [Vagrant](#vagrant)
+    - [VirtualBox](#virtualbox)
+    - [Setup project directory](#setup-project-directory)
+    - [Private Repository](#private-repository)
+    - [Provision a first service](#provision-a-first-service)
+    - [Provision](#provision)
+    - [LDAP](#ldap)
+- [License](#license)
 
 <!-- /MarkdownTOC -->
 
