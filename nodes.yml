@@ -1,0 +1,52 @@
+---
+nodes:
+  - name: base
+    box: generic/centos7
+    version: 0.2.0
+    short_description: Base box Python 3.6.12 & Pip 20.3.3
+    description: BKD base box with Python 3.6.12 and pip 20.3.3 ( default ) - Python 2.7.5 with Pip 20.3.3
+    data-disk: true
+    ip-address: 1.1.1.99
+    plays: []
+#      - base
+  - name: haproxy
+    short_description: HAProxy
+    description: DMZ-VPN HAProxy LB
+    ip-address: 1.1.1.100,1.1.1.101,1.1.1.102,1.1.1.103
+    plays:
+      - haproxy
+  - name: proxy
+    box: bento/centos-7
+    version: 202010.22.0
+    description: Proxy
+    ip-address: 1.1.1.2
+    plays:
+      - devproxy
+  - name: db
+    box: bento/centos-7
+    version: 202010.22.0
+    description: PostgreSQL database server
+    ip-address: 1.1.1.2
+    plays:
+      - postgresql
+  - name: awx
+    box: bento/centos-7
+    version: 202010.22.0
+    # box: bkd-awx
+    # version: 0.1.2
+    short_description: Ansible AWX 17.1.0
+    description: Ansible AWX 17.1.0 with Ansible 2.9.18
+    ip-address: 1.1.1.5
+    memory: 4000
+    plays:
+      - awx
+defaults:
+  box: bento/ubuntu-18.04
+  version: v202012.21.0
+  prefix: c2d # c2 dev
+  plays: []
+  memory: 1024
+  cpus: 1
+  # shell-provision: 'sudo yum update -y && sudo yum -y install python'
+  shell-provision: ''
+# dry-run: true

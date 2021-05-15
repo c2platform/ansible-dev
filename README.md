@@ -10,6 +10,7 @@ This purpose of this repository is to automate Life Cycle Management (LCM) proce
     - Vagrant
     - VirtualBox
     - Setup project directory
+    - Private Repository
     - Provision a first service
     - Provision
     - LDAP
@@ -111,6 +112,10 @@ The project uses Ansible collections. One collection, the ForgeRock collection, 
     git submodule init
     git submodule update
 
+### Private Repository
+
+TODO C2_REPO
+
 ### Provision a first service
 
 To get started, create for example the __bitbucket__ service. For this you will also need the __proxy__ node and the __db__ node. So the command becomes 
@@ -159,7 +164,6 @@ To provision a node use standard Vagrant commands see `vagrant --help` for examp
 ```
 
 To run the Ansible provisioner after nodes have been created using `vagrant up` you use `vagrant provision <node>`. See `vagrant --help` for more information.
-
 
 ### LDAP
 
