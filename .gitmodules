@@ -13,3 +13,6 @@
 [submodule "ansible_collections/c2platform/test"]
 	path = ansible_collections/c2platform/test
 	url = git@github.com:c2platform/ansible-collection-test.git
+[submodule "roles/external/microk8s"]
+	path = roles/external/microk8s
+	url = git@github.com:c2platform/ansible-role-microk8s.git
