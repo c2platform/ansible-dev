@@ -16,3 +16,6 @@
 [submodule "roles/external/microk8s"]
 	path = roles/external/microk8s
 	url = git@github.com:c2platform/ansible-role-microk8s.git
+[submodule "roles/external/c2platform.keycloak"]
+	path = roles/external/c2platform.keycloak
+	url = git@github.com:c2platform/ansible-role-keycloak.git
