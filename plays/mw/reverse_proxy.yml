@@ -1,0 +1,17 @@
+---
+- name: reverse_proxy.yml
+  hosts: reverse_proxy
+  become: yes
+
+  roles:
+    - { role: c2platform.core.common,        tags: ["common"] }
+    - { role: c2platform.mw.apache,          tags: ["reverse_proxy"] }
+
+  tasks:
+  - copy: # debug
+      content: "{{ {'apache_cacerts2_certificates': apache_cacerts2_certificates }|to_nice_yaml }}"
+      dest: /vagrant/apache_cacerts2_certificates.yml
+
+  - copy: # debug
+      content: "{{ {'cacerts2_ca_domain': cacerts2_ca_domain }|to_nice_yaml }}"
+      dest: /vagrant/cacerts2_ca_domain.yml

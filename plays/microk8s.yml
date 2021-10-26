@@ -1,0 +1,10 @@
+---
+- name: microk8s.yml
+  hosts: microk8s
+  become: yes
+  environment:
+    PATH: "/snap/bin/:{{ ansible_env.PATH }}"
+
+  roles:
+    - { role: c2platform.core.common,               tags: ["common"] }
+    - { role: microk8s,                             tags: ["common", "backup"] }

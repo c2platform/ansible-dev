@@ -1,6 +1,6 @@
 ---
-- name: postgresql.yml | All roles
-  hosts: postgresql
+- name: database.yml | All roles
+  hosts: database
   become: yes
 
   roles:

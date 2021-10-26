@@ -1,0 +1,8 @@
+---
+cacerts2_ca_server: "{{ groups['cacerts_server'][0] }}"
+cacerts2_ca_dir: /vagrant/.ca
+cacerts2_ca_domain:
+  common_name: c2d
+  cipher: auto
+  passphrase: supersecure # vault
+  create: ['key','csr', 'crt', 'p12', 'pem']

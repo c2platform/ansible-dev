@@ -1,0 +1,8 @@
+---
+- name: CA Certs Server
+  hosts: cacerts_server
+  become: yes
+
+  roles:
+    - { role: c2platform.core.common,        tags: ["common"] }
+    - { role: c2platform.core.cacerts2,      tags: ["certificates"] }

@@ -1,0 +1,68 @@
+---
+# PLAY=mgmt/restart v provision
+- name: Restart database
+  hosts: database
+  become: yes
+
+  tasks:
+    - shell:
+       cmd: |
+        systemctl stop postgresql
+        rm /var/log/postgresql*
+        systemctl start postgresql
+
+- name: Restart haproxy
+  hosts: haproxy
+  become: yes
+
+  tasks:
+    - shell:
+       cmd: |
+        systemctl stop haproxy
+        rm /var/log/haproxy*
+        systemctl start haproxy
+
+- name: Restart reverse proxy
+  hosts: reverse_proxy
+  become: yes
+
+  tasks:
+    - shell:
+       cmd: |
+        systemctl stop apache2
+        rm /var/log/apache2/*
+        systemctl start apache2
+
+
+- name: Wait for database
+  hosts: database
+  become: yes
+
+  tasks:
+    - name: Wait for database
+      wait_for:
+        path: /var/log/postgresql/postgresql-10-main.log
+        search_regex: database system is ready to accept connections
+
+- name: Restart KeyCloak
+  hosts: keycloak
+  become: yes
+
+  tasks:
+    - shell:
+       cmd: |
+        systemctl stop keycloak
+        rm /opt/keycloak/keycloak/standalone/log/*
+        systemctl start keycloak
+
+#    - name: Wait for AM
+#      ansible.builtin.uri:
+#        url: "https://localhost:8443/{{ am_context }}/isAlive.jsp"
+#        status_code: [200]
+#        return_content: yes
+#        timeout: 300
+#        validate_certs: no
+#      retries: 10
+#      delay: 20
+#      register: wait_uri
+#      until: "'Server is ALIVE' in wait_uri.content"

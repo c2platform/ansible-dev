@@ -1,0 +1,3 @@
+---
+microk8s_users: ['vagrant']
+hosts_domain_segment: mgmt.dev

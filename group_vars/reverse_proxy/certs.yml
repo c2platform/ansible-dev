@@ -1,0 +1,30 @@
+---
+apache_cacerts2_certificates:
+  - common_name: "{{ c2_apache_certificate_common_name }}"
+    subject_alt_name:
+    - "DNS:{{ hosts_domain }}"
+    - "DNS:*.{{ hosts_domain }}"
+    - "DNS:{{ ansible_hostname }}"
+    - "DNS:{{ ansible_fqdn }}"
+    - "IP:{{ ansible_eth1.ipv4.address }}"
+    deploy:
+      key:
+        dir: /etc/apache2/ssl
+        #owner: root # default C2-88
+        #group: root
+        mode: '600' # default
+        mode-parent-dir: '700' # default
+        recurse-parent-dir: no # default
+      crt:
+        dir: /etc/apache2/ssl
+  - common_name: keycloak
+    subject_alt_name:
+    - "DNS:keycloak.{{ hosts_domain }}"
+    - "DNS:{{ ansible_hostname }}"
+    - "DNS:{{ ansible_fqdn }}"
+    - "IP:{{ ansible_eth1.ipv4.address }}"
+    deploy:
+      key:
+        dir: /etc/apache2/ssl
+      crt:
+        dir: /etc/apache2/ssl

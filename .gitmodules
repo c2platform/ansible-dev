@@ -19,3 +19,6 @@
 [submodule "roles/external/c2platform.keycloak"]
 	path = roles/external/c2platform.keycloak
 	url = git@github.com:c2platform/ansible-role-keycloak.git
+[submodule "ansible_collections/community/crypto"]
+	path = ansible_collections/community/crypto
+	url = git@github.com:ansible-collections/community.crypto.git

@@ -1,0 +1,9 @@
+---
+- name: KeyCloak
+  hosts: keycloak
+  become: yes
+
+  roles:
+    - { role: c2platform.core.common,               tags: ["common"] }
+    - { role: c2platform.core.java,                 tags: ["java"] }
+    - { role: c2platform.keycloak,                  tags: ["keycloak"] }

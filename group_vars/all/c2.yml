@@ -1,0 +1,3 @@
+---
+c2_keycloak_database_host: "{{ groups['database'][0] }}.{{ hosts_domain_segment['mw'] }}.{{ hosts_domain }}"
+c2_keycloak_bind_port_https: 8443

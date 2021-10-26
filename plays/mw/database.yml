@@ -1,0 +1,9 @@
+---
+- name: database.yml | All roles
+  hosts: database
+  become: yes
+
+  roles:
+    - { role: c2platform.core.common,     tags: ["common"] }
+    - { role: galaxyproject.postgresql,   tags: ["postgresql"] }
+    - { role: c2platform.mw.postgresql,   tags: ["postgresql"] }
