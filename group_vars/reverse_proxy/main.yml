@@ -8,6 +8,10 @@ c2_apache_log_level: notice # error for production
 c2_apache_certificate_common_name: "{{ hosts_domain|replace('.','_') }}" # seetoo_tech
 c2_apache_certificate: "{{ apache_cacerts2_certificates|selectattr('common_name', 'equalto', c2_apache_certificate_common_name)|list|first }}"
 
+c2_common_packages_extra_node:
+  Ubuntu 18:
+    - libapache2-mod-auth-openidc
+
 apache_mods_enabled: # Debian/Ubuntu.
   - rewrite.load
   - ssl.load
