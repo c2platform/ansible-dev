@@ -19,6 +19,7 @@ apache_mods_enabled: # Debian/Ubuntu.
   - proxy_http.load
   - socache_shmcb.load
   - headers.load
+  - auth_openidc.load
 
 apache_files_remove:
   - /etc/apache2/sites-enabled/000-default.conf
@@ -35,6 +36,9 @@ apache_files:
             Listen {{ c2_apache_port_ssl }}
         </IfModule>
       notify: reload-apache
+    - dest: /var/www/html/myapp/index.html
+      content: |
+        Hello world! ( protected by KeyCloak & mod_auth_openidc)
   reverse_proxy:
     - dest: /var/www/html/favicon.ico
       src: file:///vagrant/ansible_collections/c2platform/mw/roles/apache/files/favicon-blue.ico
@@ -91,6 +95,20 @@ apache_files:
             AllowOverride all
             Allow from all
           </Directory>
+
+          OIDCProviderMetadataURL https://seetoo.tech/auth/realms/seetoo/.well-known/openid-configuration
+          OIDCClientID myapp-client
+          OIDCClientSecret 1651ffdc-0bf8-470b-a0d7-0a3d4f766605
+          OIDCRedirectURI https://{{ c2_apache_server_name }}/myapp/redirect_uri
+          OIDCCryptoPassphrase 4CEew/3zLkQMtw==
+          OIDCRemoteUserClaim email
+          OIDCScope "openid email"
+          OIDCPKCEMethod S256
+
+          <Location /myapp>
+             AuthType openid-connect
+             Require valid-user
+          </Location>
 
           ProxyRequests       Off
           AllowEncodedSlashes On
