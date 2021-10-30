@@ -6,7 +6,7 @@ keycloak_database_inventory_hostname: "{{ groups['database'][0] }}"
 keycloak_java_opts: "-Xms1024m -Xmx20480m -XX:MaxPermSize=768m -Dkeycloak.frontendUrl=https://{{ hosts_domain }}/auth"
 keycloak_bind_port_https: "{{ c2_keycloak_bind_port_https }}"
 
-c2_keycloak_logging_level: DEBUG
+#c2_keycloak_logging_level: DEBUG
 c2_keycloak_logging: |
   <subsystem xmlns="urn:jboss:domain:logging:8.0">
       <console-handler name="CONSOLE">
