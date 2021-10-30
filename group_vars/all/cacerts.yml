@@ -6,3 +6,7 @@ cacerts2_ca_domain:
   cipher: auto
   passphrase: supersecure # vault
   create: ['key','csr', 'crt', 'p12', 'pem']
+
+common_cacerts_enable: yes
+cacerts_os_ca_pem_urls:
+  - "file:////vagrant/.ca/c2d/c2d.crt"
