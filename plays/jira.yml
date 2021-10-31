@@ -1,11 +1,7 @@
 ---
-- name: jira.yml
-  hosts: jira
-  become: yes
-
-  roles:
-    - { role: c2platform.core.common,               tags: ["common"] }
-    - { role: c2platform.core.postgresql_client,    tags: ["jira", "postgresql"], when: jira_database_type == 'postgresql' }
-    - { role: c2platform.core.oracle_client,        tags: ["jria", "oracle"], when: jira_database_type == 'oracle' }
-    - { role: c2platform.apps.jira,                 tags: ["jira"] }
-    - { role: c2platform.mgmt.backup,               tags: ["common", "backup"] }
+# export BOX="c2d-haproxy c2d-rproxy c2d-jira c2d-db"
+# PLAY=jira v up $BOX --provision | tee provision.log
+- import_playbook: mw/haproxy.yml # socks proxy in dev
+- import_playbook: mw/database.yml
+- import_playbook: mw/reverse_proxy.yml
+- import_playbook: mw/jira.yml

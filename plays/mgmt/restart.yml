@@ -53,8 +53,8 @@
        cmd: |
         systemctl stop keycloak
         rm /opt/keycloak/keycloak/standalone/log/*
+        rm /opt/keycloak/keycloak/logs/*
         systemctl start keycloak
-
 #    - name: Wait for AM
 #      ansible.builtin.uri:
 #        url: "https://localhost:8443/{{ am_context }}/isAlive.jsp"

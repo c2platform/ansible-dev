@@ -1,0 +1,18 @@
+---
+backup_roles:
+  jira:
+    keep: { daily: 3, weekly: 2, monthly: 0, manual: 1 }
+    stop_start_service: jira
+    snapshot: no
+    incremental: no
+    # backup_lvm_snapshot_size: 2G
+    # backup_admin_user: custom_role_admin_user
+    # backup_admin_user_password: custom_role_admin_password
+
+# backup_restore:
+#   jira:
+#     path_pattern: '*'
+#     folder: home
+#     force: false
+#     remove_folder: home/caches
+#     stop_start_service: jira

@@ -1,9 +1,7 @@
 ---
-- name: KeyCloak
-  hosts: keycloak
-  become: yes
-
-  roles:
-    - { role: c2platform.core.common,               tags: ["common"] }
-    - { role: c2platform.core.java,                 tags: ["java"] }
-    - { role: c2platform.keycloak,                  tags: ["keycloak"] }
+# export BOX="c2d-haproxy c2d-rproxy c2d-keycloak c2d-db"
+# PLAY=keycloak v up $BOX --provision | tee provision.log
+- import_playbook: mw/haproxy.yml # socks proxy in dev
+- import_playbook: mw/database.yml
+- import_playbook: mw/reverse_proxy.yml
+- import_playbook: mw/keycloak.yml

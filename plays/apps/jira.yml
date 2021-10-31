@@ -1,0 +1,10 @@
+---
+- name: jira.yml
+  hosts: jira
+  become: yes
+
+  roles:
+    - { role: c2platform.core.common,               tags: ["common"] }
+    - { role: c2platform.core.postgresql_client,    tags: ["jira", "postgresql"], when: jira_database_type == 'postgresql' }
+    - { role: c2platform.apps.jira,                 tags: ["jira"] }
+    - { role: c2platform.mgmt.backup,               tags: ["common", "backup"] }
