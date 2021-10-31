@@ -110,7 +110,7 @@ apache_files:
           OIDCScope "openid email"
           OIDCPKCEMethod S256
 
-          <Location ~ "/(myapp|myapp2)">
+          <Location ~ "^/(myapp|myapp2)">
              AuthType openid-connect
              Require valid-user
           </Location>
