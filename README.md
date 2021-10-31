@@ -14,6 +14,7 @@ This purpose of this repository is to automate Life Cycle Management (LCM) proce
     - [Provision a first service](#provision-a-first-service)
     - [Provision](#provision)
     - [LDAP](#ldap)
+- [How-to](#how-to)
 - [License](#license)
 
 <!-- /MarkdownTOC -->
@@ -168,6 +169,13 @@ To run the Ansible provisioner after nodes have been created using `vagrant up` 
 ### LDAP
 
 The __proxy__ node includes a simple LDAP server based on OpenDJ. If you want to connect to the LDAP directory using a tool like [Apache Directory Studio](https://directory.apache.org/studio/) use for example ldap://1.1.1.3:389 and `cn=admin` with password `secret`.
+
+## How-to
+
+The following how-to instructions describe in detail what you can with this project.
+
+
+* [How-To Integrate Apache and KeyCloud using mod_auth_openidc](./doc/howto-keycloak.md)
 
 ## License
 
