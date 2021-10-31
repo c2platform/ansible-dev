@@ -29,6 +29,7 @@ apache_files:
     - dest: /etc/apache2/ports.conf
       content: |
         Listen {{ c2_apache_port }}
+        Listen 8080
         <IfModule ssl_module>
             Listen {{ c2_apache_port_ssl }}
         </IfModule>
@@ -36,6 +37,10 @@ apache_files:
             Listen {{ c2_apache_port_ssl }}
         </IfModule>
       notify: reload-apache
+  www-apps:
+    - dest: /var/www/html/myapp2/index.html
+      content: |
+        Hello world from myapp2! ( protected by KeyCloak & mod_auth_openidc)
     - dest: /var/www/html/myapp/index.html
       content: |
         Hello world! ( protected by KeyCloak & mod_auth_openidc)
@@ -105,7 +110,7 @@ apache_files:
           OIDCScope "openid email"
           OIDCPKCEMethod S256
 
-          <Location /myapp>
+          <Location ~ "/(myapp|myapp2)">
              AuthType openid-connect
              Require valid-user
           </Location>
@@ -116,8 +121,25 @@ apache_files:
 
           ProxyPass           /auth  https://{{ hostvars[groups['keycloak'][0]].ansible_host }}:{{ c2_keycloak_bind_port_https }}/auth
           ProxyPassReverse    /auth  https://{{ hostvars[groups['keycloak'][0]].ansible_host }}:{{ c2_keycloak_bind_port_https }}/auth
+          ProxyPass           /myapp2  http://127.0.0.1:8080/myapp2/
+          ProxyPassReverse    /myapp2  http://127.0.0.1:8080/myapp2/
 
           LogLevel {{ c2_apache_log_level }}
           ErrorLog {{ apache_settings['log_dir'] }}/ssl-{{ c2_apache_server_name|replace('.','-') }}.log
           CustomLog {{ apache_settings['log_dir'] }}/ssl-{{ c2_apache_server_name|replace('.','-') }}.log combined
+        </VirtualHost>
+    - dest: /etc/apache2/sites-enabled/myapp.conf
+      notify: reload-apache
+      content: |
+        <VirtualHost *:8080>
+          ServerAdmin admin@{{ ansible_fqdn }}
+          ServerName myapp2
+          DocumentRoot /var/www/html
+          <Directory />
+            AllowOverride all
+            Allow from all
+          </Directory>
+          LogLevel {{ c2_apache_log_level }}
+          ErrorLog {{ apache_settings['log_dir'] }}/myapp2.log
+          CustomLog {{ apache_settings['log_dir'] }}/myapp2.log combined
         </VirtualHost>
