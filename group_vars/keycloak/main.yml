@@ -1,7 +1,7 @@
 ---
 postgresql_client_version: 10
 keycloak_jdbc_jar: postgresql-42.3.0.jar
-keycloak_database_host: "{{ c2_keycloak_database_host }}"
+keycloak_database_host: c2d-db.mw.dev.seetoo.tech # "{{ c2_keycloak_database_host }}"
 keycloak_database_inventory_hostname: "{{ groups['database'][0] }}"
 keycloak_java_opts: "-Xms1024m -Xmx20480m -XX:MaxPermSize=768m -Dkeycloak.frontendUrl=https://{{ hosts_domain }}/auth"
 keycloak_bind_port_https: "{{ c2_keycloak_bind_port_https }}"
