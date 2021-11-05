@@ -1,0 +1,22 @@
+---
+postgresql_client_version: 10
+jira_version: 8.13.0
+# jira_manual_upgrade: yes
+
+jira_database_host: c2d-db.mw.dev.seetoo.tech
+jira_proxy_name: seetoo.tech
+
+# Atlassian Support recommended JVM arguments and proxy config
+jira_jvm_support_recommended_args: >-
+  -Datlassian.plugins.enable.wait=300
+  -XX:+UnlockExperimentalVMOptions
+  -XX:+UseCGroupMemoryLimitForHeap
+  -XX:MaxRAMFraction=1
+#  -Dhttps.proxyHost={{ proxy_host }}
+#  -Dhttps.proxyPort={{ proxy_port }}
+#  -Dhttp.nonProxyHosts=*.nip.io\|localhost
+# note escape character for nonProxyHosts
+
+jira_libraries:
+  - url: https://github.com/javamelody/jira-confluence-javamelody/releases/download/1.83.0/jira-confluence-javamelody-1.83.0.jar
+    checksum: sha256:2007bf47db63690f61a919cc828332d1d852c283c48137e07db608dd3c82e65e

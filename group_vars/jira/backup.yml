@@ -9,10 +9,11 @@ backup_roles:
     # backup_admin_user: custom_role_admin_user
     # backup_admin_user_password: custom_role_admin_password
 
-# backup_restore:
-#   jira:
-#     path_pattern: '*'
-#     folder: home
-#     force: false
-#     remove_folder: home/caches
-#     stop_start_service: jira
+backup_restore:
+  jira:
+    path_pattern: '*'
+    folder: home
+    force: false
+    remove_folder: home/caches
+    role_after_restore: c2platform.apps.jira
+    stop_start_service: jira
