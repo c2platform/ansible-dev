@@ -102,15 +102,15 @@ apache_files:
           </Directory>
 
           OIDCProviderMetadataURL https://seetoo.tech/auth/realms/seetoo/.well-known/openid-configuration
-          OIDCClientID myapp-client
-          OIDCClientSecret 1651ffdc-0bf8-470b-a0d7-0a3d4f766605
+          OIDCClientID myapp
+          OIDCClientSecret f847aa0a-308a-40b4-b03b-b398ec2228e8
           OIDCRedirectURI https://{{ c2_apache_server_name }}/myapp/redirect_uri
           OIDCCryptoPassphrase 4CEew/3zLkQMtw==
           OIDCRemoteUserClaim email
           OIDCScope "openid email"
           OIDCPKCEMethod S256
 
-          <Location ~ "^/(myapp|myapp2)">
+          <Location ~ "^/(myapp|jira)">
              AuthType openid-connect
              Require valid-user
           </Location>
@@ -121,9 +121,10 @@ apache_files:
 
           ProxyPass           /auth  https://{{ hostvars[groups['keycloak'][0]].ansible_host }}:{{ c2_keycloak_bind_port_https }}/auth
           ProxyPassReverse    /auth  https://{{ hostvars[groups['keycloak'][0]].ansible_host }}:{{ c2_keycloak_bind_port_https }}/auth
-          ProxyPass           /myapp2  http://127.0.0.1:8080/myapp2/
-          ProxyPassReverse    /myapp2  http://127.0.0.1:8080/myapp2/
-
+          ProxyPass           /myapp2  http://127.0.0.1:8080/myapp2
+          ProxyPassReverse    /myapp2  http://127.0.0.1:8080/myapp2
+          ProxyPass           /jira  http://1.1.1.13:8080/jira
+          ProxyPassReverse    /jira  http://1.1.1.13:8080/jira
           LogLevel {{ c2_apache_log_level }}
           ErrorLog {{ apache_settings['log_dir'] }}/ssl-{{ c2_apache_server_name|replace('.','-') }}.log
           CustomLog {{ apache_settings['log_dir'] }}/ssl-{{ c2_apache_server_name|replace('.','-') }}.log combined
