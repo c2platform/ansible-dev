@@ -4,4 +4,4 @@
 - import_playbook: mw/haproxy.yml # socks proxy in dev
 - import_playbook: mw/database.yml
 - import_playbook: mw/reverse_proxy.yml
-- import_playbook: mw/jira.yml
+- import_playbook: apps/jira.yml
