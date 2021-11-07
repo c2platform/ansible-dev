@@ -20,3 +20,13 @@ jira_jvm_support_recommended_args: >-
 jira_libraries:
   - url: https://github.com/javamelody/jira-confluence-javamelody/releases/download/1.83.0/jira-confluence-javamelody-1.83.0.jar
     checksum: sha256:2007bf47db63690f61a919cc828332d1d852c283c48137e07db608dd3c82e65e
+
+java_version: jira
+java_versions:
+  jira:
+    java_home: "{{ jira_home_version_app }}/jre"
+    bundles:
+    - alias: c2d
+      url: file:///vagrant/.ca/c2d/c2d.crt
+    notify: jira-systemctl-restart
+    install: false # we are only managing keystore
