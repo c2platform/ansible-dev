@@ -52,6 +52,7 @@ Vagrant.configure(2) do |config|
             # ansible.galaxy_role_file = '../roles/requirements.yml'
             # ansible.galaxy_roles_path = '~/.ansible/roles'
             # ansible.verbose = 'vvv'
+            # ansible.raw_arguments = ["--check"]
           end
         end
       end
