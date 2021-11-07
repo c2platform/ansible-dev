@@ -1,0 +1,9 @@
+---
+#backup_restore:
+#  keycloak:
+#    path_pattern: '*'
+#    folder: .
+#    stop_start_service: keycloak
+#    delegate_db: c2d-db
+#    role_after_restore: c2platform.keycloak
+#
