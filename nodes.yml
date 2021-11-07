@@ -46,6 +46,7 @@ nodes:
     short_description: Jira Server
     description: Jira Server
     ip-address: 1.1.1.13
+    memory: 4000
     plays:
       - apps/jira
 defaults:
