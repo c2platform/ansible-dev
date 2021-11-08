@@ -14,7 +14,9 @@ nodes:
       - mw/reverse_proxy
   - name: db
     short_description: PostgreSQL Server
-    description: Simple PostgreSQL server
+    description: Simple PostgreSQL server with KeyCload 15.0.2 with seetoo realm, Jira 8.13.0
+    box: c2d-db
+    version: 0.1.0
     ip-address: 1.1.1.80
     plays:
       - mw/database
@@ -37,14 +39,18 @@ nodes:
     plays:
       - microk8s
   - name: keycloak
-    short_description: KeyCload Server
-    description: KeyCload Server standalone mode
+    short_description: KeyCload Server 15.0.2
+    description: KeyCload Server 15.0.2 standalone mode with seetoo realm for Jira
+    box: c2d-keycloak
+    version: 0.1.0
     ip-address: 1.1.1.51
     plays:
       - mw/keycloak
   - name: jira
-    short_description: Jira Server
-    description: Jira Server
+    short_description: Jira Server 8.13.0
+    box: c2d-jira
+    version: 0.1.0
+    description: Jira Server 8.13.0 with Jira Enterprise SSO ( KeyCloak ) add-on
     ip-address: 1.1.1.13
     memory: 4000
     plays:
@@ -56,6 +62,6 @@ defaults:
   plays: []
   memory: 1024
   cpus: 1
-  #shell-provision: 'sudo apt update'
-  shell-provision: ''
+  shell-provision: 'sudo apt update'
+  #shell-provision: ''
 # dry-run: true
