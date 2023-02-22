@@ -1,6 +1,6 @@
 # How-To Integrate KeyCloud and Jira
 
-This how-to describes how to integrate KeyCloud and Jira using [SSO for Atlassian Server and Data Center - Atlassian Marketplace|https://marketplace.atlassian.com/apps/1216096/sso-for-atlassian-server-and-data-center?hosting=server&tab=versions]. See also [OpenID Connect for Atlassian Data Center applications|https://confluence.atlassian.com/enterprise/openid-connect-for-atlassian-data-center-applications-987142159.html]
+This how-to describes how to integrate KeyCloud and Jira using [SSO for Atlassian Server and Data Center - Atlassian Marketplace](https://marketplace.atlassian.com/apps/1216096/sso-for-atlassian-server-and-data-center?hosting=server&tab=versions). See also [OpenID Connect for Atlassian Data Center applications](https://confluence.atlassian.com/enterprise/openid-connect-for-atlassian-data-center-applications-987142159.html])
 
 [![SSO for Atlassian Server and Data Center ](./files/sso-atlassian-server.png)](./files/sso-atlassian-server.png)
 
@@ -11,7 +11,7 @@ This how-to describes how to integrate KeyCloud and Jira using [SSO for Atlassia
 
 <!-- /MarkdownTOC -->
 
-## Install 
+## Install
 
 In 8.13.0 this app is pre-installed. Update it to latest version.
 

@@ -1,0 +1,8 @@
+db_restore:
+    changed: true
+    cmd: 'cmd: ****'
+    failed: false
+    msg: ''
+    rc: 0
+    stderr: ''
+    stderr_lines: []
